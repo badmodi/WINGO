@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paid Mod</title>
+  <style>
+    @import url('https://fonts.google.com/share?selection.family=Exo:ital,wght@0,100..900;1,100..900|Fjalla+One|Orbitron:wght@400..900;display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    /* Access Page */
+    .access-box {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px 25px 35px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 200, 0.5);
+      max-width: 350px;
+      width: 100%;
+    }
+    .access-box h1 {
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #00ffee;
+      text-shadow: 0 0 10px #00ffee;
+    }
+    .access-box h2 {
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 18px;
+      color: #00ccff;
+    }
+    input {
+      padding: 10px;
+      margin: 10px 0 15px;
+      border-radius: 5px;
+      border: none;
+      width: 100%;
+      font-size: 14px;
+    }
+    button {
+      background: linear-gradient(45deg, #00ffaa, #00ccff, #00ffaa);
+      background-size: 200% 200%;
+      color: #000;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffee;
+    }
+    .telegram-button {
+      background: #0088cc;
+      color: #fff;
+      font-weight: 600;
+      text-shadow: none;
+      padding: 12px 15px;
+      border-radius: 30px;
+      box-shadow: 0 0 15px #00acee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+    }
+    .telegram-button:hover {
+      background: #00acee;
+      box-shadow: 0 0 25px #00acee;
+    }
+    #error {
+      color: #ff4d4d;
+      margin-top: 10px;
+      font-weight: 600;
+      display: none;
+    }
+    /* Main Content (BDG WIN Hack) */
+    .blurred {
+      pointer-events: none;
+      filter: blur(6px) brightness(0.8);
+    }
+    .container {
+      width: 360px;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(20, 20, 20, 0.95));
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 0 25px rgba(0, 255, 200, 0.5), 0 0 50px rgba(0, 200, 255, 0.3);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 2px solid rgba(0, 255, 200, 0.6);
+      position: relative;
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .safe-tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: linear-gradient(45deg, #00ffcc, #00ffaa, #00ccff);
+      color: #000;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 15px;
+      letter-spacing: 0.8px;
+      box-shadow: 0 0 15px rgba(0, 255, 200, 0.8);
+    }
+    .header {
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      color: #0ff;
+    }
+    .online-users,
+    .user-info {
+      font-weight: bold;
+      text-shadow: 0 0 5px cyan;
+    }
+    .logo img {
+      max-width: 120px;
+      margin: 0 auto;
+      display: block;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+      color: #00ffee;
+    }
+    .info-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 15px;
+      border: 2px solid rgba(0, 255, 200, 0.6);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 200, 0.5);
+      font-weight: bold;
+      background: linear-gradient(135deg, rgba(0, 255, 200, 0.05), rgba(0, 150, 255, 0.05));
+    }
+    .instruction-box {
+      background: rgba(0, 255, 200, 0.05);
+      border: 1px solid rgba(0, 255, 200, 0.6);
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #0ff;
+      text-shadow: 0 0 5px #00ffee;
+    }
+    .button {
+      background: linear-gradient(45deg, #00ffaa, #00ccff, #00ffaa);
+      background-size: 200% 200%;
+      animation: gradientMove 3s infinite;
+      color: #000;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      width: 100%;
+    }
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00ffee;
+    }
+    .register-btn {
+      background: linear-gradient(45deg, #ff4d4d, #ff0000, #ff4d4d);
+      background-size: 200% 200%;
+      animation: gradientMove 3s infinite;
+      color: #fff;
+      border: 1px solid #ff3333;
+    }
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    #popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(15, 15, 15, 0.95);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 255, 200, 0.6);
+      color: #fff;
+      width: 90%;
+      max-width: 400px;
+      z-index: 1000;
+      border: 2px solid #0ff;
+      backdrop-filter: blur(6px);
+      animation: popupShow 0.6s ease;
+    }
+    @keyframes popupShow {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+    #popup span.close {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 18px;
+      color: #0ff;
+      cursor: pointer;
+    }
+    #popup span.close:hover {
+      color: #ff3333;
+    }
+    #popup .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Access Page -->
+  <div class="access-box" id="access-page">
+    <h1>Join telegram channel and get access pass</h1>
+    <h2>🔒 Enter Access Password </h2>
+    <input type="password" id="passInput" placeholder="Enter password" />
+    <button onclick="checkPass()">Open hack</button>
+    <a
+      href="https://t.me/+-E98FQKYi5AxMGFl"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="telegram-button"
+      >Join Telegram</a
+    >
+    <p id="error">❌ Incorrect password</p>
+  </div>
+
+  <!-- Main Content -->
+  <div id="content" style="display: none;">
+    <div id="main-content" class="container blurred">
+      <div class="safe-tag">100% Safe</div>
+      <div class="header">
+        <span></span>
+        <span class="online-users" id="online-users"></span>
+      </div>
+      <div class="user-info" id="user-winning"></div>
+      <div class="logo">
+        <img
+          src="https://i.ibb.co/8g5wjmZy/20250614-140825.png"
+          alt="Logo"
+        />
+      </div>
+      <div class="title">𝗕𝗗𝗚 𝗪𝗜𝗡 (𝗛𝗮𝗰𝗸)</div>
+      <div class="info-section">
+        <div id="wingo">Wingo: 1min</div>
+        <div id="period1m">Period: --</div>
+        <div id="timer1m">Remaining Time: --:--</div>
+        <div id="result">Result: Awaiting...</div>
+      </div>
+      <div class="instruction-box">
+        ⚠️ Create new BDG Game account via Register. Old accounts will not work!
+      </div>
+      <button
+        class="button register-btn"
+        onclick="window.open('https://tinyurl.com/ysdu4lhv', '_blank')"
+      >
+        Register
+      </button>
+      <button
+        class="button"
+        onclick="window.open('https://t.me/Vip_modBDBot', '_blank')"
+      >
+        Telegram Channel
+      </button>
+      <button
+        class="button"
+        onclick="window.open('https://t.me/+-E98FQKYi5AxMGFl', '_blank')"
+      >
+        Gift Codes
+      </button>
+    </div>
+    <div id="popup">
+      <span class="close" onclick="closePopup()">❎</span>
+      <p>
+        🔴
+        <strong
+          >Create a new <span style="color: #0ff;">BDG WIN</span> account</strong
+        >
+        by clicking “Register”. Old accounts may fail! ⚠️
+      </p>
+      <p>✅ <strong>FOR FREE HACK</strong>, join our Telegram:</p>
+      <div class="btn-group">
+        <button
+          class="button register-btn"
+          onclick="window.open('https://tinyurl.com/ysdu4lhv', '_blank')"
+        >
+          🔗 Register
+        </button>
+        <button
+          class="button"
+          onclick="window.open('https://t.me/+-E98FQKYi5AxMGFl', '_blank')"
+        >
+          📢 Telegram Channel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function checkPass() {
+      const input = document.getElementById('passInput').value;
+      if (input === 'Vip120') {
+        document.getElementById('access-page').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        document.body.style.alignItems = 'flex-start'; // adjust layout after unlock
+        document.getElementById('popup').style.display = 'block';
+        document.getElementById('main-content').classList.add('blurred');
+        startGameScripts();
+      } else {
+        document.getElementById('error').style.display = 'block';
+      }
+    }
+
+    function startGameScripts() {
+      function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+        document.getElementById('main-content').classList.remove('blurred');
+      }
+      window.closePopup = closePopup;
+
+      function generateOnlineUsers() {
+        const u = Math.floor(Math.random() * 1599) + 95;
+        document.getElementById('online-users').textContent = `Online Users: ${u}`;
+      }
+      function generateUserWinning() {
+        const amount = Math.floor(Math.random() * 891) + 10;
+        const u = `${Math.floor(Math.random() * 2000 + 9970)}`;
+        document.getElementById(
+          'user-winning'
+        ).textContent = `User ${u.slice(0, 3)}***${u.slice(-3)} Win ${amount} by Badon`;
+      }
+      const results = [
+        '0 (Small) Violet',
+        '1 (Small) Green',
+        '2 (Small) Red',
+        '3 (Small) Green',
+        '4 (Small) Red',
+        '5 (Big) Violet',
+        '6 (Big) Red',
+        '7 (Big) Green',
+        '8 (Big) Red',
+        '9 (Big) Green',
+      ];
+      function pickRandomResult() {
+        const idx = new Date().getUTCMinutes() % 10;
+        document.getElementById('result').textContent = `Result: ${results[idx]}`;
+      }
+      function updateTimer() {
+        const n = new Date();
+        const sec = 60 - n.getUTCSeconds();
+        const mins = n.getUTCHours() * 60 + n.getUTCMinutes();
+        const ds = n.toISOString().slice(0, 10).replace(/-/g, '');
+        document.getElementById('period1m').textContent = `Period: ${ds}1000${
+          10001 + mins
+        }`;
+        document.getElementById('timer1m').textContent = `Remaining Time: 00 : ${sec
+          .toString()
+          .padStart(2, '0')}`;
+      }
+      setInterval(updateTimer, 1000);
+      setInterval(pickRandomResult, 1000);
+      setInterval(() => {
+        generateOnlineUsers();
+        generateUserWinning();
+      }, 1500);
+      updateTimer();
+      pickRandomResult();
+      generateOnlineUsers();
+      generateUserWinning();
+    }
+  </script>
+</body>
+</html>
